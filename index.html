@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vagas cadastradas | Estacionamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__conteudo">
+      <a class="marca" href="index.html"><span aria-hidden="true">P</span>Estacionamento</a>
+      <nav class="menu" aria-label="Principal">
+        <a href="index.html" aria-current="page">Vagas</a>
+        <a href="cadastro.html">Nova reserva</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="titulo-pagina">Vagas do condomínio</h1>
+    <p class="subtitulo">Veja quem está em cada vaga e quais ainda estão livres.</p>
+
+    <section class="resumo" aria-label="Resumo">
+      <div><strong id="resumo-total">0</strong><span>vagas no total</span></div>
+      <div class="ocupada"><strong id="resumo-ocupadas">0</strong><span>ocupadas</span></div>
+      <div class="livre"><strong id="resumo-livres">0</strong><span>disponíveis</span></div>
+    </section>
+
+    <section class="secao" aria-labelledby="t-mapa">
+      <div class="secao__cab">
+        <h2 id="t-mapa">Mapa de vagas</h2>
+        <div class="legenda"><span><i class="l"></i>Disponível</span><span><i class="o"></i>Ocupada</span></div>
+      </div>
+      <div class="baias" id="mapa-vagas" role="list"></div>
+    </section>
+
+    <section class="secao" aria-labelledby="t-lista">
+      <div class="secao__cab">
+        <h2 id="t-lista">Reservas cadastradas</h2>
+        <a class="btn btn--primario" href="cadastro.html">Nova reserva</a>
+      </div>
+      <div class="caixa">
+        <div class="ferramentas">
+          <label for="busca" class="dica">Buscar por placa, nome, apartamento ou vaga</label>
+          <input id="busca" type="search" style="width:100%;margin-top:6px" autocomplete="off">
+        </div>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr><th>Vaga</th><th>Placa</th><th>Proprietário</th><th>Apto / Bloco</th><th>Veículo</th><th>Cor</th><th>Ações</th></tr>
+            </thead>
+            <tbody id="tabela-corpo"></tbody>
+          </table>
+        </div>
+        <p class="vazio" id="sem-resultados" hidden>Nenhuma reserva encontrada. Cadastre uma nova reserva para ocupar uma vaga.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="dialogo-remover" aria-labelledby="t-remover">
+    <h2 id="t-remover">Remover reserva?</h2>
+    <p id="remover-texto"></p>
+    <div class="acoes" style="margin-top:0">
+      <button type="button" class="btn btn--primario" id="btn-confirmar-remover">Remover reserva</button>
+      <button type="button" class="btn btn--neutro" id="btn-cancelar-remover">Cancelar</button>
+    </div>
+  </dialog>
+
+  <script src="js/models/Reserva.js"></script>
+  <script src="js/models/ReservaRepository.js"></script>
+  <script src="js/views/ListaView.js"></script>
+  <script src="js/controllers/ListaController.js"></script>
+</body>
+</html>

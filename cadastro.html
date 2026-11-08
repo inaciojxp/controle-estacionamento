@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova reserva | Estacionamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__conteudo">
+      <a class="marca" href="index.html"><span aria-hidden="true">P</span>Estacionamento</a>
+      <nav class="menu" aria-label="Principal">
+        <a href="index.html">Vagas</a>
+        <a href="cadastro.html" aria-current="page">Nova reserva</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="titulo-pagina">Nova reserva de vaga</h1>
+    <p class="subtitulo">Preencha os dados do veículo e do morador e escolha uma vaga livre.</p>
+
+    <form class="form" id="form-reserva" novalidate>
+      <div class="grade">
+        <div class="campo">
+          <label for="placa">Placa do veículo</label>
+          <input id="placa" name="placa" maxlength="8" placeholder="ABC-1234 ou ABC1D23" autocomplete="off" required>
+          <p class="erro" id="erro-placa" role="alert"></p>
+        </div>
+        <div class="campo">
+          <label for="vaga">Número da vaga</label>
+          <select id="vaga" name="vaga" required></select>
+          <p class="erro" id="erro-vaga" role="alert"></p>
+        </div>
+        <div class="campo largo">
+          <label for="proprietario">Nome do proprietário</label>
+          <input id="proprietario" name="proprietario" autocomplete="name" required>
+          <p class="erro" id="erro-proprietario" role="alert"></p>
+        </div>
+        <div class="campo">
+          <label for="apartamento">Número do apartamento</label>
+          <input id="apartamento" name="apartamento" inputmode="numeric" maxlength="4" required>
+          <p class="erro" id="erro-apartamento" role="alert"></p>
+        </div>
+        <div class="campo">
+          <label for="bloco">Bloco</label>
+          <input id="bloco" name="bloco" maxlength="3" placeholder="Ex.: A" required>
+          <p class="erro" id="erro-bloco" role="alert"></p>
+        </div>
+        <div class="campo">
+          <label for="modelo">Modelo do veículo</label>
+          <input id="modelo" name="modelo" placeholder="Ex.: Honda Civic" required>
+          <p class="erro" id="erro-modelo" role="alert"></p>
+        </div>
+        <div class="campo">
+          <label for="cor">Cor do veículo</label>
+          <input id="cor" name="cor" placeholder="Ex.: Prata" required>
+          <p class="erro" id="erro-cor" role="alert"></p>
+        </div>
+      </div>
+      <div class="acoes">
+        <button type="submit" class="btn btn--primario">Salvar reserva</button>
+        <a href="index.html" class="btn btn--neutro">Ver vagas</a>
+      </div>
+    </form>
+  </main>
+
+  <dialog id="dialogo-sucesso" aria-labelledby="t-sucesso">
+    <h2 id="t-sucesso">Reserva cadastrada com sucesso!</h2>
+    <p id="sucesso-texto"></p>
+    <form method="dialog" class="acoes" style="margin-top:0">
+      <button class="btn btn--primario" autofocus>Fechar</button>
+      <a href="index.html" class="btn btn--neutro">Ver vagas</a>
+    </form>
+  </dialog>
+
+  <script src="js/models/Reserva.js"></script>
+  <script src="js/models/ReservaRepository.js"></script>
+  <script src="js/views/CadastroView.js"></script>
+  <script src="js/controllers/CadastroController.js"></script>
+</body>
+</html>
